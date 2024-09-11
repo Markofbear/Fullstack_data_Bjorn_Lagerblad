@@ -29,7 +29,7 @@ def handle_user_input():
         st.session_state.messages.append({"role": "user", "content": prompt})
 
         bot_response = st.session_state.bot.chat(prompt)
-        response = f"Ro Båt: {bot_response}"
+        response = f"{bot_response}"
 
         with st.chat_message("assistant"):
             st.markdown(response)

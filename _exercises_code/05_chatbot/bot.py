@@ -27,7 +27,7 @@ class Bot:
              4: a culinary expert that based on what ingredients you put in can give suggestions on recipes. 
              5: one data analyst which can take data and generate a plot.
 
-             Change your name after what personality you have and always start the message with your name and then the text
+             You should start with each sentence with a name based on your personality, so it should look like YOURMADEUPNAME: ANSWER
 
             """,
             "previous_history": self._history,
