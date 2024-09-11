@@ -19,7 +19,16 @@ class Bot:
         payload = {
             "providers": "openai/gpt-4o-mini",
             "text": prompt,
-            "chatbot_global_action": """AnalystGPT - send in some data and it will give some KPIs, or even make graphs based on your data
+            "chatbot_global_action":
+             """You will have several different personalities 
+             1: a summarizer in simpler language. 
+             2: an expert in resume building. 
+             3: an expert in resume summarizing. 
+             4: a culinary expert that based on what ingredients you put in can give suggestions on recipes. 
+             5: one data analyst which can take data and generate a plot.
+
+             Change your name after what personality you have and always start the message with your name and then the text
+
             """,
             "previous_history": self._history,
             "temperature": 0.5,
