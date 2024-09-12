@@ -45,4 +45,3 @@ class Bot:
 
 
 bot = Bot()
-bot.chat("Tell me a joke ")
