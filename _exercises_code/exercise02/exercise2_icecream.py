@@ -8,7 +8,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
 def load_data():
-    data_path = Path(__file__).parents[1] / "data"
+    data_path = Path(__file__).parents[2] / "data"
     df = pd.read_csv(data_path / "IceCreamData.csv")
     return df
 
