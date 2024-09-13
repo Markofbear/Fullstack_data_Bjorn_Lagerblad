@@ -17,25 +17,15 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-import streamlit as st
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from pathlib import Path
-
-@st.cache_data
+@st.cache_data  # Speeds up function
 def read_data():
     data_path = Path(__file__).parents[2] / "data"
-    df = pd.read_csv(data_path / "pisa_data.csv")  # Adjust the path if necessary
+    df = pd.read_csv(data_path / "pisa_data.csv")
     return df
 
 df = read_data()
 
-st.sidebar.title("Filters")
-selected_country = st.sidebar.selectbox("Select a Country", df["LOCATION"].unique())
-selected_subject = st.sidebar.selectbox("Select a Subject", df["SUBJECT"].unique())
-
-st.title("PISA Data Analysis")
+st.title("PISA Data Analyze")
 
 def basic_statistics(df):
     num_records = df.shape[0]
@@ -52,14 +42,14 @@ st.header("Basic Statistics")
 basic_statistics(df)
 
 st.header("Sample Data")
-num_rows = st.slider("Number of Rows to View", min_value=5, max_value=50, value=5)
+num_rows = st.slider("Rows", min_value=5, max_value=50)
 st.dataframe(df.head(num_rows))
 
 st.header("Average PISA Scores by Location")
 all_locations = df["LOCATION"].unique()
 
 selected_locations = st.multiselect(
-    "Select Locations (or leave blank to show all)", all_locations, default=all_locations
+    "Select Locations (blank = all)", all_locations, default=all_locations
 )
 
 def plot_average_scores_by_location(df, locations):
@@ -77,7 +67,10 @@ def plot_average_scores_by_location(df, locations):
 
 plot_average_scores_by_location(df, selected_locations)
 
-st.header(f"PISA Score Trends for {selected_country}")
+
+st.header("PISA Score Trends")
+selected_country = st.selectbox("Select a Country", df["LOCATION"].unique())
+selected_subject = st.selectbox("Select a Subject", df["SUBJECT"].unique())
 
 def plot_trend(df, location, subject):
     country_data = df[(df["LOCATION"] == location) & (df["SUBJECT"] == subject)]
@@ -90,4 +83,7 @@ def plot_trend(df, location, subject):
     st.pyplot(plt)
 
 plot_trend(df, selected_country, selected_subject)
+
+
+
 
