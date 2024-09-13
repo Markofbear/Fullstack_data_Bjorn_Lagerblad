@@ -25,7 +25,25 @@ def read_data():
 
 df = read_data()
 
-st.title("PISA Data Analyze")
+st.sidebar.title("Filters")
+
+all_locations = df["LOCATION"].unique()
+selected_locations = st.sidebar.multiselect(
+    "Select Locations", all_locations, default=all_locations
+)
+
+all_subjects = df["SUBJECT"].unique()
+selected_subjects = st.sidebar.multiselect(
+    "Select Subjects", all_subjects, default=all_subjects
+)
+
+all_time_periods = df["TIME"].unique()
+selected_time_periods = st.sidebar.slider(
+    "Select Time Period Range", min_value=int(all_time_periods.min()), max_value=int(all_time_periods.max()),
+    value=(int(all_time_periods.min()), int(all_time_periods.max())), step=1
+)
+
+st.title("PISA Data Analysis")
 
 def basic_statistics(df):
     num_records = df.shape[0]
@@ -42,20 +60,18 @@ st.header("Basic Statistics")
 basic_statistics(df)
 
 st.header("Sample Data")
-num_rows = st.slider("Rows", min_value=5, max_value=50)
+num_rows = st.slider("Number of Rows to View", min_value=5, max_value=50, value=5)
 st.dataframe(df.head(num_rows))
 
 st.header("Average PISA Scores by Location")
-all_locations = df["LOCATION"].unique()
 
-selected_locations = st.multiselect(
-    "Select Locations (blank = all)", all_locations, default=all_locations
-)
+filtered_df = df[
+    df["LOCATION"].isin(selected_locations) &
+    df["SUBJECT"].isin(selected_subjects) &
+    df["TIME"].between(*selected_time_periods)
+]
 
-def plot_average_scores_by_location(df, locations):
-    if locations:
-        df = df[df["LOCATION"].isin(locations)]
-    
+def plot_average_scores_by_location(df):
     avg_scores = df.groupby("LOCATION")["Value"].mean().reset_index()
 
     plt.figure(figsize=(10, 6))
@@ -65,12 +81,9 @@ def plot_average_scores_by_location(df, locations):
     plt.ylabel("Location")
     st.pyplot(plt)
 
-plot_average_scores_by_location(df, selected_locations)
-
+plot_average_scores_by_location(filtered_df)
 
 st.header("PISA Score Trends")
-selected_country = st.selectbox("Select a Country", df["LOCATION"].unique())
-selected_subject = st.selectbox("Select a Subject", df["SUBJECT"].unique())
 
 def plot_trend(df, location, subject):
     country_data = df[(df["LOCATION"] == location) & (df["SUBJECT"] == subject)]
@@ -82,7 +95,8 @@ def plot_trend(df, location, subject):
     plt.ylabel("PISA Score")
     st.pyplot(plt)
 
-plot_trend(df, selected_country, selected_subject)
+if selected_locations and selected_subjects:
+    plot_trend(filtered_df, selected_locations[0], selected_subjects[0])
 
 
 
