@@ -13,4 +13,6 @@ FROM
 	youtube
 GROUP BY
 	category
-ORDER BY number DESC;
+ORDER BY
+	number DESC
+LIMIT 10;

@@ -12,6 +12,7 @@ __pycache__/
 
 # duckdb
 *.wal
+*.DS_Store 
 
 # Distribution / packaging
 .Python
