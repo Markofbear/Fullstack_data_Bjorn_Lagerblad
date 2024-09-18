@@ -6,6 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+# dbeaver
+.project
+.dbeaver
+
+# duckdb
+*.wal
+
 # Distribution / packaging
 .Python
 build/
