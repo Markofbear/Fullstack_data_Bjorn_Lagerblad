@@ -1,72 +1,14 @@
-# Plan for fullstack course
+# Exercises 
 
-This course is divided into two parts, where part 1 consists mostly of theory, while part 2 is more focused on a project work.
+Exercises are not compulsory but very much essential to be able to understand how to implement the different concepts yourself. If you master the exercises, the lab and project will be much easier to handle and in the longer perspective also your job.
 
-Throughout the course, there will be video lectures covering all parts
+> [!TIP]
+> Use whatever tool available to solve the exercises, for example an LLM, but remember to learn the concepts and not just copy and paste code as this will slow down your learning. Also it is good to discuss with friends on how to solve the exercises. 
 
-## Part 1
+A key part in learning programming is to understand the glossary so that you can understand and communicate efficiently to other in the data/IT team or other outside of the data/IT team. Therefore I add some glossary in the accompanying exercises that are good to learn. However note that not all the glossary is brought up in class, but some might show up in other resources.
 
-| Week    | Content                                 | Lecture | Exercise |
-| ------- | --------------------------------------- | ------- | -------- |
-| week 34 | **repetition of python**                | 00-01   | 0        |
-|         | - functional                            |         |          |
-|         | - OOP                                   |         |          |
-|         | - mob programming                       |         |          |
-| week 35 | **repetition of data processing**       | 02      | 1        |
-|         | - pandas fundamentals                   |         |          |
-|         | - matplotlib visualisations             |         |          |
-|         | - plotly visualisations                 |         |          |
-| week 36 | **frontend**                            | 03-04   | 2        |
-|         | - basic dashboard in streamlit          |         |          |
-|         | - widgets and inputs                    |         |          |
-|         | - displaying data                       |         |          |
-|         | - graphs                                |         |          |
-|         | - basic styling                         |         |          |
-| week 37 | **streamlit continue**                  | 05-06   | 2        |
-|         | - LLM chatbot                           |         |          |
-|         | - refactor OOP                          |         |          |
-|         |                                         |         |          |
-| week 38 | **SQL, dashboard lab**                  | 07      |          |
-|         | - DuckDB intro                          |         |          |
-|         | - SQL repetition                        |         |          |
-|         | - load csv data                         |         |          |
-|         | - select, insert, update, delete        |         |          |
-|         | - aggregations                          |         |          |
-|         | - joins                                 |         |          |
-|         | - subquery                              |         |          |
-|         | - lab introduction                      |         |          |
-| week 39 | **dimensional modeling, dashboard lab** |         |          |
-|         | - connect python with duckdb            |         |          |
-|         | - data warehouse concept                |         |          |
-|         | - star schema                           |         |          |
-|         | - layers: staging, refined, serving     |         |          |
-|         | - data marts                            |         |          |
-| week 40 | **dashboard lab**                       |         |          |
-|         | - presentation and submit code          |         |          |
-| week 41 | **buffer time**                         |         |          |
-|         |                                         |         |          |
+> [!TIP]
+> You can use an LLM for the glossary, but I strongly recommend you to summarize shortly in your own wordings so that you really familiarize yourself with the data language.
 
-## Part 2
-
-| Week   | Content                                 | Lecture |
-| ------ | --------------------------------------- | ------- |
-| week 2 | **agile, clean code**                   |         |
-|        | - SOLID principles                      |         |
-|        | - DRY principle                         |         |
-|        | - agile manifesto                       |         |
-| week 3 | **project**                             |         |
-|        | - unit tests                            |         |
-|        | - git branches, pull requests           |         |
-| week 4 | **continous integration (CI), project** |         |
-|        | - github actions                        |         |
-|        | - toolings: black, flake8, TBD          |         |
-| week 5 | **continous deployment (CD), project**  |         |
-|        | - github actions for CD                 |         |
-| week 6 | **project**                             |         |
-|        | - presentation and submit project       |         |
-| week 7 | **buffer time**                         |         |
-
-NOTE
-
-- job ad project
-- dlt to load data
+> [!TIP]
+> Try solve the exercises yourself first, then check with LLM for another solution or help in refactoring your code. Also you could ask for tips from LLM but don't ask for the answer. It's also better to type out answers from an LLM rather than copy and pasting, as you'll learn muscle memory in programming when you type it out. 

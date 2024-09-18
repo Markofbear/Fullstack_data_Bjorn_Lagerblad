@@ -1,8 +1,8 @@
 # SQL with DuckDB
 
-<!-- [![video](https://github.com/kokchun/assets/blob/025ae8622a25d5522d11b21108f52f1df9388ea2/data_warehouse/snowflake_free_trial.png?raw=true)](https://github.com/kokchun/assets/blob/025ae8622a25d5522d11b21108f52f1df9388ea2/data_warehouse/snowflake_free_trial.png?raw=true) -->
+Watch this video on how to setup duckdb and dbeaver. 
+[![setup duckdb and dbeaver and testing](https://github.com/kokchun/assets/blob/main/oop_advanced/dbeaver_setup.png?raw=true)](https://youtu.be/b9VMLSXKHwk)
 
-> [!IMPORTANT] > [LINK TO VIDEO &nbsp; :video_camera:](https://)
 
 ## Setup
 
@@ -13,6 +13,25 @@ Then we'll need the python client for connecting to duckdb through Python
 ```bash
 uv pip install duckdb
 ```
+
+Now [download and install dbeaver](https://dbeaver.io/download/), which is an IDE for viewing databases.
+
+## DBeaver
+
+First use the DuckDB CLI to create a new database file 
+
+```bash
+duckdb first_db.db
+```
+
+and then run a command so that it saves, lets say `desc` command to describe the database. Now there should be a database file called first_db.db saved in your file system. 
+
+Inside of dbeaver
+1. open new project, import from directory where your first_db.db file is 
+2. establish a connection to your first_db.db file
+3. create SQL script and start using SQL
+
+
 
 ## DuckDB cli
 
