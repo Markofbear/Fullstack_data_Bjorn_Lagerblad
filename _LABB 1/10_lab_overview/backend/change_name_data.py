@@ -9,7 +9,8 @@ raw_data_path = Path(__file__).parent / "raw_data"
 cleaned_data_path = Path(__file__).parent / "cleaned_data"
 
 # ifall cleaned_data finns ta bort hela katalogträdet
-rmtree(cleaned_data_path)
+if cleaned_data_path.is_dir():
+    rmtree(cleaned_data_path)
 
 # skapa cleaned_data folder
 cleaned_data_path.mkdir(parents=True, exist_ok=True)

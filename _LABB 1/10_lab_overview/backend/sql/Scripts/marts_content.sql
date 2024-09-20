@@ -49,3 +49,6 @@ SELECT
 	*
 FROM
 	marts.views_per_date;
+
+
+

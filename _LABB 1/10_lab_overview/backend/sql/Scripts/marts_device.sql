@@ -26,3 +26,5 @@ FROM
 -- checks
 SELECT * FROM marts.device_views_date;
 SELECT * FROM marts.device_summary;
+
+
