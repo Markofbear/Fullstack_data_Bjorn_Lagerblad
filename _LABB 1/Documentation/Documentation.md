@@ -44,13 +44,13 @@ Så detta script tar data för datum och visningstid och sorterar det sen i fall
 - ### **marts_content.sql**
 >![marts_content](images/image-6.png)
 
-marts_content.sql
+marts_content.sql väljer relevant data inom vår db om youtube videos såsom, titel, visningar, prenumeranter osv.
 
 ---
 
 - ### **marts_device.sql**
 >![marts_devices](images/image-7.png)
 
-marts_device.sql
+marts_device.sql skapar två tabeller en för visningar per datum och en med visningtid med genonsnittlig visningslängd.
 
 ---
