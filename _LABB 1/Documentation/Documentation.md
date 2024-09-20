@@ -6,21 +6,21 @@
 >![change_name_data](images/image-1.png)
 
 
-change_name_data.py 
+change_name_data.py ändrar namnet på tidigare raw_data mappen från långa namn till kortare mera lätt arbetliga namn såsom "Datum XX_XX_XXXX" till den första meningen i varje mappen med split()[0], alltså "Datum XX_XX_XXXX" -> "Datum" sedan skapar cleaned data mappen om den redan existerar tar den bort den nuvarande bearbetande datan och gör ingen förändring. (tror du hörde diskussionen med Milton om hur man kunde göra det annorlunda.)
 
 ---
 
 - ### **constants.py**
 >![constants](images/image-2.png)
 
-constants.py
+constants.py vår path till youtube_data och cleaned data tillkallas som DATABASE_PATH och CLEANED_DATA_PATH senare i skripten.
 
 ---
 
 - ### **database.py**
 >![database](images/image-3.png)
 
-database.py
+database.py öppnar en connection till vår databas.
 
 ---
 
