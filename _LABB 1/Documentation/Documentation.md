@@ -27,26 +27,29 @@ database.py öppnar en connection till vår databas.
 - ### **ingest_data_to_database.py**
 >![ingest_data_to_database](images/image-4.png)
 
-ingest_data_to_database.py
+ingest_data_to_database.py ändra alla "å,ä,ö" till a respektive o ändra alla stora bokstäver till små och dela vid varje punkt sedan skapar den ett schema om den inte redan existerar och skapar en tabell med information ifrån vår path.
 
 ---
 
 - ### **EDA.sql**
 >![EDA](images/image-5.png)
 
-EDA.sql
+EDA.sql tar tabelller och skapar dom med namnet tabelldata och totalt, OFFSET hoppar över en rad
+STRFTIME(har vi gått igenom detta?) är SQLs variant av datetime alltså den ändrar till datum år-månad-dag i detta fallet.
+
+Så detta script tar data för datum och visningstid och sorterar det sen i fallande ordning.     
 
 ---
 
 - ### **marts_content.sql**
->![alt text](image-6.png)
+>![marts_content](images/image-6.png)
 
 marts_content.sql
 
 ---
 
 - ### **marts_device.sql**
->![alt text](image-7.png)
+>![marts_devices](images/image-7.png)
 
 marts_device.sql
 
