@@ -20,7 +20,7 @@ constants.py vår path till youtube_data och cleaned data tillkallas som DATABAS
 - ### **database.py**
 >![database](images/image-3.png)
 
-database.py öppnar en connection till vår databas.
+database.py öppnar en connection till vår databas för att sedan stänga den.
 
 ---
 

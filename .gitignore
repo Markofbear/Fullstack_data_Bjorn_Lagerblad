@@ -6,14 +6,6 @@ __pycache__/
 # C extensions
 *.so
 
-# dbeaver
-.project
-.dbeaver
-
-# duckdb
-*.wal
-*.DS_Store 
-
 # Distribution / packaging
 .Python
 build/
@@ -64,7 +56,7 @@ cover/
 *.pot
 
 # Django stuff:
-
+*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -114,8 +106,10 @@ ipython_config.py
 #pdm.lock
 #   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
 #   in version control.
-#   https://pdm.fming.dev/#use-with-ide
+#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
 .pdm.toml
+.pdm-python
+.pdm-build/
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
@@ -169,4 +163,9 @@ cython_debug/
 
 *.DS_Store
 
+# dbeaver
+.project
+.dbeaver
+
+# duckdb
 *.wal
