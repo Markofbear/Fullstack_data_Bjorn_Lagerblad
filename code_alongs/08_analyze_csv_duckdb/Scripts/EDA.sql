@@ -2,10 +2,9 @@ SELECT * FROM youtube;
 
 SELECT DISTINCT(category) FROM youtube;
 
-SELECT count(*) FROM youtube;
+SELECT COUNT(*) FROM youtube; 
 
-	-- how many in each category
-
+-- how many in each category top 10?
 SELECT
 	category,
 	COUNT(*) AS Number
@@ -16,3 +15,10 @@ GROUP BY
 ORDER BY
 	number DESC
 LIMIT 10;
+
+
+
+
+
+
+

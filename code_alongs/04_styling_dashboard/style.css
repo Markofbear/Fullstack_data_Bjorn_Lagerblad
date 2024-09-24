@@ -18,6 +18,17 @@
     --background: #fafafa;
     --background-secondary: #ebebeb;
 }
+/* lobotomized owl - 
+selector looks for children of body with another sibling*/
+body * + * {
+    margin-top: var(--s-2);
+    background-color: var(--background-secondary);
+}
+
+/* finds selector on attribute value */
+[data-testid|="stHeader"]{
+    display: none;
+}
 
 h1, h2, h3, p {
     color: var(--primary);
@@ -37,4 +48,17 @@ h3 {
 
 p {
     font-size: var(--s0);
+}
+
+/* . to use class selector */
+.stAppViewBlockContainer {
+    background-color: var(--background);
+    padding-top: var(--s1);
+    padding-left: var(--s3);
+    padding-right: var(--s3);
+    max-width: 110ch; /* 110 characters width */
+}
+
+[data-testid|="stVerticalBlockBorderWrapper"] * {
+    background-color: revert;
 }
