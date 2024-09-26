@@ -24,3 +24,84 @@ SELECT * FROM  innehall.diagramdata;-- ORDER BY "Visningstid (timmar)";
 
 SELECT STRFTIME('%Y-%m-%d', Datum), Visningar FROM innehall.totalt;
 
+
+-- Snabb titt på enhetstyp
+SELECT
+    Enhetstyp,
+    Visningar
+FROM
+    enhetstyp.diagramdata;
+
+    
+-- Sammanslagning av alla visningar till en kolumn (SUM)
+SELECT
+    Enhetstyp,
+    SUM(Visningar) AS Summering_visningar
+FROM
+    enhetstyp.diagramdata
+GROUP BY
+    Enhetstyp 
+ORDER BY
+    Summering_visningar DESC;
+
+   
+-- Kollar över geografi data
+SELECT * FROM geografi.diagramdata;
+
+SELECT
+	Geografi,
+	SUM(Visningar)
+FROM
+	geografi.diagramdata
+GROUP BY
+	Geografi
+ORDER BY
+	SUM(Visningar);
+
+-- Innehållstyp
+
+SELECT * FROM innehallstyp.diagramdata;
+ 
+-- Operativsystem
+SELECT * FROM operativsystem.diagramdata;
+
+
+-- Slutsats, Windows är bättre att kolla på youtube än Mac
+SELECT
+	Operativsystem,
+	SUM(Visningar)
+FROM
+	operativsystem.diagramdata
+GROUP BY
+	Operativsystem
+ORDER BY
+	SUM(Visningar);
+
+-- Gör en average på visningar genom enhetstyp
+SELECT 
+    Enhetstyp, 
+    AVG(Visningar)
+FROM 
+    enhetstyp.diagramdata
+GROUP BY 
+    Enhetstyp
+ORDER BY 
+    AVG(Visningar) DESC;
+
+ -- Summering av visningar
+SELECT 
+    Innehållstyp, 
+    SUM(Visningar)
+FROM 
+    innehallstyp.diagramdata
+GROUP BY 
+    Innehållstyp
+ORDER BY 
+    SUM(Visningar) DESC;
+   
+
+
+
+
+
+ 

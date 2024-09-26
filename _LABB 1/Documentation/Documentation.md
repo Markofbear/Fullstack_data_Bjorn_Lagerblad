@@ -34,7 +34,7 @@ ingest_data_to_database.py ändra alla "å,ä,ö" till a respektive o ändra all
 - ### **EDA.sql**
 >![EDA](images/image-5.png)
 
-EDA.sql tar tabeller och skapar dom med namnet tabelldata och totalt, OFFSET hoppar över en rad
+EDA.sql tar tabelller och skapar dom med namnet tabelldata och totalt, OFFSET hoppar över en rad
 STRFTIME(har vi gått igenom detta?) är SQLs variant av datetime alltså den ändrar till datum år-månad-dag i detta fallet.
 
 Så detta script tar data för datum och visningstid och sorterar det sen i fallande ordning.     
