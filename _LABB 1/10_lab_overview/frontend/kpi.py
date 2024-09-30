@@ -1,4 +1,5 @@
 import streamlit as st
+import plotly.express as px
 from utils.query_database import QueryDatabase
 
 class ContentKPI:
@@ -57,16 +58,33 @@ class OSKPI:
 
     def display_os(self):
         df = self._os
-        st.markdown("## KPIer för Operativsystem")
-        st.markdown("Nedan visas KPIer för operativsystem")
+        
+        st.markdown("## Operativsystem")
 
         kpis = {
-            "antal operativsystem": len(df),
-            "totalt antal visningar": df["sum_visningar"].sum(),
+            "Antal operativsystem": len(df),
+            "Totalt antal visningar": df["Genomsnitt visningar"].sum(),
         }
 
         for col, kpi in zip(st.columns(len(kpis)), kpis):
             with col: 
                 st.metric(kpi, round(kpis[kpi]))
 
-        st.dataframe(df)
+        df_display = df.rename(columns={
+            "Genomsnitt visningar": "Totalt antal visningar",
+            "Genomsnittliga visningar": "Genomsnittlig visningstid",
+            "Procent av totalt": "Procent av totalt"
+        })
+
+        st.dataframe(df_display)
+
+        fig = px.bar(
+            df_display,
+            x="Operativsystem", 
+            y="Totalt antal visningar", 
+            title="Totala visningar per Operativsystem",
+            labels={"Operativsystem": "Operativsystem", "Totalt antal visningar": "Visningar"},
+            color="Procent av totalt"
+        )
+
+        st.plotly_chart(fig)
