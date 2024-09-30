@@ -1,5 +1,8 @@
 import streamlit as st
 import plotly.express as px
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 from utils.query_database import QueryDatabase
 
 class ContentKPI:
@@ -9,7 +12,6 @@ class ContentKPI:
     def display_content(self):
         df = self._content
         st.markdown("## KPIer för videor")
-        st.markdown("Nedan visas KPIer för totalt antal")
 
         kpis = {
             "videor": len(df),
@@ -28,12 +30,21 @@ class DeviceKPI:
     pass 
 
 
+country_code_mapping = {
+    "SE": "SWE",
+    "IN": "IND",
+    "MT": "MLT",
+}
+
 class GeographyKPI:
     def __init__(self) -> None:
         self._geography = QueryDatabase("SELECT * FROM marts.geography_summary;").df
 
     def display_geography(self):
-        df = self._geography 
+        df = self._geography.copy()
+
+        df["Landskod"] = df["country_code"].map(country_code_mapping)
+
         st.markdown("## Info över länder")
 
         kpis = {
@@ -45,12 +56,23 @@ class GeographyKPI:
             with col:
                 st.metric(kpi, round(kpis[kpi]))
 
-        df_display = df.rename(columns={
-            "country_code": "Landskod",
+        df_display = df[["Landskod", "Total visningar", "percent_of_total"]].rename(columns={
             "percent_of_total": "Antal i procent"
         })
 
         st.dataframe(df_display)
+
+        fig = px.choropleth(
+            df_display,
+            locations="Landskod",
+            locationmode="ISO-3", 
+            color="Total visningar",
+            hover_name="Landskod",
+            color_continuous_scale=px.colors.sequential.Plasma, 
+            title="Världen Heatmap över visningar per land"
+        )
+
+        st.plotly_chart(fig)
 
 class OSKPI:
     def __init__(self) -> None:
