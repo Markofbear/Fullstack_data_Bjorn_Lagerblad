@@ -25,3 +25,43 @@ class ContentKPI:
 # create more KPIs here
 class DeviceKPI:
     pass 
+
+class GeographyKPI:
+    def __init__(self) -> None:
+        self._geography = QueryDatabase("SELECT * FROM marts.geography_summary;").df
+
+    def display_geography(self):
+        df = self._geography
+        st.markdown("## KPIer för Geografi")
+        st.markdown("Nedan visas KPIer för geografiska visningar")
+
+        kpis = {
+            "antal länder": len(df),
+            "totalt antal visningar": df["total_visningar"].sum(),
+        }
+
+        for col, kpi in zip(st.columns(len(kpis)), kpis):
+            with col: 
+                st.metric(kpi, round(kpis[kpi]))
+
+        st.dataframe(df)
+
+class OSKPI:
+    def __init__(self) -> None:
+        self._os = QueryDatabase("SELECT * FROM marts.os;").df
+
+    def display_os(self):
+        df = self._os
+        st.markdown("## KPIer för Operativsystem")
+        st.markdown("Nedan visas KPIer för operativsystem")
+
+        kpis = {
+            "antal operativsystem": len(df),
+            "totalt antal visningar": df["sum_visningar"].sum(),
+        }
+
+        for col, kpi in zip(st.columns(len(kpis)), kpis):
+            with col: 
+                st.metric(kpi, round(kpis[kpi]))
+
+        st.dataframe(df)
