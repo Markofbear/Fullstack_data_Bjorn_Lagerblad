@@ -32,12 +32,12 @@ class GeographyKPI:
         self._geography = QueryDatabase("SELECT * FROM marts.geography_summary;").df
 
     def display_geography(self):
-        df = self._geography  # Ensure df is defined here
-        st.markdown("## KPIer för Geografi")
+        df = self._geography 
+        st.markdown("## Info över länder")
 
         kpis = {
             "antal länder": len(df),
-            "totalt antal visningar": df["Total visningar"].sum(),  # Updated column name
+            "totalt antal visningar": df["Total visningar"].sum(),
         }
 
         for col, kpi in zip(st.columns(len(kpis)), kpis):
