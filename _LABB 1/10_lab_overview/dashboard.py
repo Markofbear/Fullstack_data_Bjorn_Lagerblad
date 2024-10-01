@@ -3,10 +3,11 @@ from frontend.kpi import ContentKPI, GeographyKPI, OSKPI, ExposureKPI
 from frontend.graphs import ViewsTrend
 
 content_kpi = ContentKPI()
+views_graph = ViewsTrend()
 geography_kpi = GeographyKPI()
 os_kpi = OSKPI()
 exposure_kpi = ExposureKPI()
-views_graph = ViewsTrend()
+
 
 def layout():
     st.markdown("# The data driven youtuber")
