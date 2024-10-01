@@ -1,4 +1,4 @@
-import streamlit as st  # Make sure to import streamlit
+import streamlit as st
 from frontend.kpi import ContentKPI, GeographyKPI, OSKPI, ExposureKPI 
 from frontend.graphs import ViewsTrend
 
@@ -13,12 +13,11 @@ def layout():
     st.markdown("# The data driven youtuber")
     st.markdown("Den här dashboarden syftar till att utforska datan i min youtubekanal")
     
-    # Display KPIs
     content_kpi.display_content()
+    views_graph.display_plot()
     geography_kpi.display_geography()
     os_kpi.display_os()
-    exposure_kpi.display_exposure()  # Add this line to display exposure KPIs
-    views_graph.display_plot()
+    exposure_kpi.display_exposure()  
 
 if __name__ == "__main__":
     layout()
