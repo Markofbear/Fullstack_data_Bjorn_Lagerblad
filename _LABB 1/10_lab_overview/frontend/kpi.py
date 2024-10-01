@@ -5,6 +5,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from utils.query_database import QueryDatabase
 
+
+
 class ContentKPI:
     def __init__(self) -> None:
         self._content = QueryDatabase("SELECT * FROM marts.content_view_time;").df
@@ -110,3 +112,29 @@ class OSKPI:
         )
 
         st.plotly_chart(fig)
+
+class ExposureKPI:
+    def __init__(self) -> None:
+        self._exposure = QueryDatabase("SELECT * FROM marts.summary;").df 
+
+    def display_exposure(self):
+        df = self._exposure
+
+        st.markdown("## Exponeringar KPI")
+
+        if not df.empty:
+            total_exposures = df["Total_Exponeringar"].sum()  
+            average_click_rate = df["Genomsnittlig_Klickfrekvens"].mean()  
+
+            kpis = {
+                "Totala exponeringar": total_exposures,
+                "Genomsnittlig klickfrekvens (%)": average_click_rate,
+            }
+
+            for col, kpi in zip(st.columns(len(kpis)), kpis):
+                with col:
+                    st.metric(kpi, round(kpis[kpi], 2))
+
+            st.dataframe(df)
+
+
