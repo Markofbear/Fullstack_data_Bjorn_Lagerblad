@@ -98,10 +98,77 @@ GROUP BY
     Innehållstyp
 ORDER BY 
     SUM(Visningar) DESC;
+
+-- EDA test och fördjupning
+    
+SELECT 
+    Innehållstyp, 
+    SUM(Visningar) AS total_visningar
+FROM 
+    innehallstyp.diagramdata
+GROUP BY 
+    Innehållstyp
+ORDER BY 
+    total_visningar DESC
+LIMIT 5;
+
+SELECT DISTINCT Innehållstyp 
+FROM innehallstyp.diagramdata;
+
+SELECT 
+    STRFTIME('%Y-%m-%d', Datum) AS Date, 
+    SUM(Visningar) AS total_visningar
+FROM 
+    innehall.totalt
+GROUP BY 
+    Date
+ORDER BY 
+    total_visningar DESC
+LIMIT 5;
+
+SELECT 
+    Enhetstyp, 
+    SUM(Visningar) AS total_visningar
+FROM 
+    enhetstyp.diagramdata
+GROUP BY 
+    Enhetstyp
+ORDER BY 
+    total_visningar DESC;
+   
+-- Exponering EDA
+
+SELECT 
+    Videotitel, 
+    "Publiceringstid för video" AS Publiceringstid,
+    Visningar, 
+    "Visningstid (timmar)" AS Visningstid, 
+    Prenumeranter, 
+    Exponeringar, 
+    "Klickfrekvens för exponeringar (%)"
+FROM 
+    youtube_data.innehall.tabelldata
+ORDER BY 
+    Exponeringar DESC 
+LIMIT 5;
+
+SELECT 
+    SUM(Visningar) AS Total_Visningar,
+    SUM(Exponeringar) AS Total_Exponeringar,
+    AVG("Klickfrekvens för exponeringar (%)") AS Genomsnittlig_Klickfrekvens
+FROM 
+    youtube_data.innehall.tabelldata;
+   
+SELECT 
+    Exponeringar, 
+    "Klickfrekvens för exponeringar (%)"
+FROM 
+    youtube_data.innehall.tabelldata
+WHERE 
+    Exponeringar > 0;  
    
 
 
 
 
 
- 
