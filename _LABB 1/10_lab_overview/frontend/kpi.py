@@ -45,24 +45,24 @@ class GeographyKPI:
 
         st.markdown("## Geografiska KPIer")
 
-        if not df.empty:
-            total_views = df["Total visningar"].sum()
-            df["percent_of_total"] = (df["Total visningar"] / total_views) * 100
+        
+        total_views = df["Total visningar"].sum()
+        df["percent_of_total"] = (df["Total visningar"] / total_views) * 100
 
-            st.metric("Totala visningar", total_views)
-            st.metric("Antal länder", len(df))
+        st.metric("Totala visningar", total_views)
+        st.metric("Antal länder", len(df))
 
-            df_display = df.rename(columns={
+        df_display = df.rename(columns={
                 "country_code": "Land",
                 "Total visningar": "Totala visningar",
                 "percent_of_total": "Procent av totalt"
             })
 
-            df_display["ISO-3"] = df_display["Land"].apply(convert_iso2_to_iso3)
+        df_display["ISO-3"] = df_display["Land"].apply(convert_iso2_to_iso3)
 
-            st.dataframe(df_display[['Land', 'Totala visningar', 'Procent av totalt']]) 
+        st.dataframe(df_display[['Land', 'Totala visningar', 'Procent av totalt']]) 
 
-            fig = px.choropleth(
+        fig = px.choropleth(
                 df_display,
                 locations="ISO-3",
                 locationmode="ISO-3",
@@ -73,7 +73,7 @@ class GeographyKPI:
                 title="Totala visningar per Land"
             )
 
-            st.plotly_chart(fig)
+        st.plotly_chart(fig)
 
 
 class OSKPI:
