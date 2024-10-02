@@ -1,6 +1,14 @@
 import streamlit as st
 from frontend.kpi import ContentKPI, GeographyKPI, OSKPI, ExposureKPI 
 from frontend.graphs import ViewsTrend
+import os
+
+def load_css(file_name):
+    file_path = os.path.join(os.path.dirname(__file__), file_name)
+    with open(file_path) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+load_css("styles.css")
 
 content_kpi = ContentKPI()
 views_graph = ViewsTrend()
