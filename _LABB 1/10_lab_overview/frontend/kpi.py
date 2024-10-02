@@ -38,6 +38,7 @@ def convert_iso2_to_iso3(iso2):
 
 class GeographyKPI:
     def __init__(self) -> None:
+        # Use the correct table name here
         self._geography = QueryDatabase("SELECT * FROM marts.geography_summary;").df
 
     def display_geography(self):
@@ -45,7 +46,6 @@ class GeographyKPI:
 
         st.markdown("## Geografiska KPIer")
 
-        
         total_views = df["Total visningar"].sum()
         df["percent_of_total"] = (df["Total visningar"] / total_views) * 100
 
@@ -53,25 +53,25 @@ class GeographyKPI:
         st.metric("Antal länder", len(df))
 
         df_display = df.rename(columns={
-                "country_code": "Land",
-                "Total visningar": "Totala visningar",
-                "percent_of_total": "Procent av totalt"
-            })
+            "country_code": "Land",
+            "Total visningar": "Totala visningar",
+            "percent_of_total": "Procent av totalt"
+        })
 
         df_display["ISO-3"] = df_display["Land"].apply(convert_iso2_to_iso3)
 
         st.dataframe(df_display[['Land', 'Totala visningar', 'Procent av totalt']]) 
 
         fig = px.choropleth(
-                df_display,
-                locations="ISO-3",
-                locationmode="ISO-3",
-                color="Totala visningar",
-                hover_name="Land",
-                color_continuous_scale=px.colors.sequential.Plasma,
-                labels={"Totala visningar": "Totala visningar"},
-                title="Totala visningar per Land"
-            )
+            df_display,
+            locations="ISO-3",
+            locationmode="ISO-3",
+            color="Totala visningar",
+            hover_name="Land",
+            color_continuous_scale=px.colors.sequential.Plasma,
+            labels={"Totala visningar": "Totala visningar"},
+            title="Totala visningar per Land"
+        )
 
         st.plotly_chart(fig)
 
