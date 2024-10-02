@@ -18,3 +18,4 @@ ALTER TABLE marts.geography_summary RENAME COLUMN Geografi TO country_code;
 
 SELECT * 
 FROM marts.geography_summary;
+
