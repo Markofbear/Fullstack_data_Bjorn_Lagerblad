@@ -89,6 +89,18 @@ class OSKPI:
         
         st.markdown("## Operativsystem")
 
+        os_options = df["Operativsystem"].unique() 
+        selected_os = st.selectbox("Välj Operativsystem", options=os_options)  
+
+        if selected_os:
+            os_info = df[df["Operativsystem"] == selected_os].iloc[0]  
+
+            st.markdown("### Information om valt operativsystem:")
+            st.write(f"**Operativsystem:** {os_info['Operativsystem']}")
+            st.write(f"**Totalt antal visningar:** {os_info['Genomsnitt visningar']}")
+            st.write(f"**Genomsnittlig visningstid:** {os_info['Genomsnittliga visningar']}")
+            st.write(f"**Procent av totalt:** {os_info['Procent av totalt']}%")
+
         kpis = {
             "Antal operativsystem": len(df),
             "Totalt antal visningar": df["Genomsnitt visningar"].sum(),
@@ -115,7 +127,10 @@ class OSKPI:
             color="Procent av totalt"
         )
 
+        fig.for_each_trace(lambda t: t.update(marker=dict(opacity=0.5) if t.name != selected_os else dict(opacity=1)))
+
         st.plotly_chart(fig)
+
 
 class ExposureKPI:
     def __init__(self) -> None:
