@@ -69,7 +69,6 @@ pyparsing==3.1.4
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pytz==2024.1
-pywin32==306
 pywin32-ctypes==0.2.3
 pyzmq==26.1.1
 readme-renderer==44.0
