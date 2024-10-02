@@ -1,20 +1,27 @@
 /* styles.css */
 
+body, .stApp {
+    background-color: #c4c4c4 !important; /* Your desired background color */
+}
+
+/* Ensure the text color is visible against the background */
 body {
-    background-color: #f0f0f5; /* Light gray background */
-    color: #333; /* Dark text color */
-    font-family: Arial, sans-serif; /* Change font */
+    color: #fdfdfd; /* Change text color to white for contrast */
 }
 
+/* Optional: Modify header colors */
 h1, h2, h3 {
-    color: #0073e6; /* Custom color for headers */
+    color: #030000; /* Custom color for headers */
 }
 
+/* Style metrics */
 .stMetric {
-    background-color: #e6f7ff; /* Light blue background for metrics */
-    border: 1px solid #0073e6; /* Blue border for metrics */
+    background-color: #ffffff; /* Light blue background for metrics */
+    border: 2px solid #000000; /* Blue border for metrics */
 }
 
+/* Style dataframes */
 .stDataFrame {
-    border: 2px solid #0073e6; /* Blue border for dataframes */
+    border: 2px solid #000000; /* Blue border for dataframes */
 }
+

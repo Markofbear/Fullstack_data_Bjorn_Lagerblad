@@ -1,9 +1,6 @@
 import streamlit as st
 import plotly.express as px
-import pandas as pd
-import seaborn as sns
 import pycountry
-import matplotlib.pyplot as plt
 from utils.query_database import QueryDatabase
 
 
@@ -63,7 +60,6 @@ class GeographyKPI:
 
             df_display["ISO-3"] = df_display["Land"].apply(convert_iso2_to_iso3)
 
-            st.markdown("### Landsinformation")
             st.dataframe(df_display[['Land', 'Totala visningar', 'Procent av totalt']]) 
 
             fig = px.choropleth(
@@ -95,7 +91,6 @@ class OSKPI:
         if selected_os:
             os_info = df[df["Operativsystem"] == selected_os].iloc[0]  
 
-            st.markdown("### Information om valt operativsystem:")
             st.write(f"**Operativsystem:** {os_info['Operativsystem']}")
             st.write(f"**Totalt antal visningar:** {os_info['Genomsnitt visningar']}")
             st.write(f"**Genomsnittlig visningstid:** {os_info['Genomsnittliga visningar']}")
