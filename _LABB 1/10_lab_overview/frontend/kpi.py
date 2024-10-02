@@ -31,11 +31,10 @@ class ContentKPI:
 class DeviceKPI:
     pass 
 
-
-country_code_mapping = {
-    "SE": "SWE",
-    "IN": "IND",
-    "MT": "MLT",
+country_name_mapping = {
+    "SE": "Sweden",
+    "IN": "India",
+    "MT": "Malta"
 }
 
 class GeographyKPI:
@@ -45,7 +44,7 @@ class GeographyKPI:
     def display_geography(self):
         df = self._geography.copy()
 
-        df["Landskod"] = df["country_code"].map(country_code_mapping)
+        df["Geografi"] = df["country_code"].map(country_name_mapping)
 
         st.markdown("## Info över länder")
 
@@ -58,7 +57,7 @@ class GeographyKPI:
             with col:
                 st.metric(kpi, round(kpis[kpi]))
 
-        df_display = df[["Landskod", "Total visningar", "percent_of_total"]].rename(columns={
+        df_display = df[["Geografi", "Total visningar", "percent_of_total"]].rename(columns={
             "percent_of_total": "Antal i procent"
         })
 
@@ -66,12 +65,12 @@ class GeographyKPI:
 
         fig = px.choropleth(
             df_display,
-            locations="Landskod",
-            locationmode="ISO-3", 
-            color="Total visningar",
-            hover_name="Landskod",
-            color_continuous_scale=px.colors.sequential.Plasma, 
-            title="Världen Heatmap över visningar per land"
+            locations="Geografi",  
+            color="Total visningar",  
+            hover_name="Geografi", 
+            title="Världen Choropleth Map över visningar per land",
+            projection="orthographic",  
+            color_continuous_scale="RdBu", 
         )
 
         st.plotly_chart(fig)
